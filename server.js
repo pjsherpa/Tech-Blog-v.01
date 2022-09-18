@@ -15,5 +15,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //accessing msql to connect to the db
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Server started on port${PORT}`));
+  app.listen(PORT, () =>
+    console.log(`\n Now listenening ${PORT} http://localhost:${PORT}`)
+  );
 });
