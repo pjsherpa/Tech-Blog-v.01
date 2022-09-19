@@ -6,24 +6,20 @@ const { Post, User } = require("../models");
 //Import cutom middleware
 const withAuth = require("../utils/auth");
 
-//Get all blogs from homepage
+//Get all posts from homepage
 
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all data
     const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-        },
-      ],
+      include: [User],
     });
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    //work on view and create a homepage
-    res.render("homepage", {
+
+    res.render("all-posts-administration", {
       posts,
       logged_in: req.session.logged_in,
     });
