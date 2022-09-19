@@ -6,7 +6,7 @@ const { Post, User } = require("../models");
 //Import cutom middleware
 const withAuth = require("../utils/auth");
 
-//Get all posts from homepage
+//Get all posts in homepage
 
 router.get("/", async (req, res) => {
   try {
@@ -29,19 +29,19 @@ router.get("/", async (req, res) => {
 });
 
 //check which id the route will be located.
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/post/:id", withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk({
-      where: { id: req.params.id },
-      include: [User, { model: Comment }],
+    const postData = await Post.findByPk(req.params.id, {
+      include: [User],
+      model: Comment,
     });
 
-    if (!projectData) {
-      res.status(404).json({ message: "No project found with this id!" });
-      return;
-    }
+    const posts = postData.get({ plain: true });
 
-    res.status(200).json(projectData);
+    res.render("single-post", {
+      ...posts,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -58,7 +58,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect("/dashboard");
     return;
   }
