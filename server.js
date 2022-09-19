@@ -27,7 +27,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine("handlbars", hbs.engine);
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
