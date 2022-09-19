@@ -1,15 +1,16 @@
 // ref:miniPost 28 MVC
-
+// WIP--->Worked on this already to check final product --PJ
 const router = require("express").Router();
 const { Post } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+// create new post
 router.post("/", withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
       user_id: req.session.user_id,
-    });console.log("--->"newPost)
+    });
 
     res.status(200).json(newPost);
   } catch (err) {
@@ -17,6 +18,22 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+//update new post
+router.put("/:id", withAuth, async (req, res) => {
+  try {
+    console.log("here is the req.body", req.body);
+    const postData = await Post.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//delete post
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
