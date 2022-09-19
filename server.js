@@ -31,7 +31,8 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+// this is the reason why we don't have to completely link ../../public/css/style.css and js in handlebars as this already give us access to the public folder.
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);

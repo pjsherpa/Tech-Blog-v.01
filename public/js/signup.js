@@ -7,8 +7,8 @@ const singupHandler = async function (event) {
   const response = await fetch("/api/user", {
     method: "POST",
     body: JSON.stringify({
-      username: usernameEl.value,
-      password: passwordEl.value,
+      usernameEl,
+      passwordEl,
     }),
     headers: { "Content-type": "application/json" },
   });
