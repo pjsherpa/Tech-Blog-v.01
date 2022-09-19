@@ -1,5 +1,4 @@
 // What we learnt in express
-
 const router = require("express").Router();
 const userRouter = require("./user-routes");
 const blogRoutes = require("./post-routes");
