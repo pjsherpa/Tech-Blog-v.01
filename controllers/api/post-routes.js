@@ -1,5 +1,5 @@
 // ref:miniPost 28 MVC
-// WIP--->Worked on this already to check final product --PJ
+// WIP--->Worked on this already to check final --PJ
 const router = require("express").Router();
 const { Post } = require("../../models");
 const withAuth = require("../../utils/auth");

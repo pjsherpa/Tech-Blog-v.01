@@ -11,8 +11,9 @@ router.get("/", withAuth, async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
 
-    res.render("dashboard", {
+    res.render("all-posts", {
       posts,
+      layout: "dashboard",
       loggedIn: true,
     });
   } catch (err) {
