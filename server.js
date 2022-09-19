@@ -32,7 +32,7 @@ app.engine("handlbars", hbs.engine);
 app.set("view engine", "handlebars");
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 //accessing msql to connect to the db
