@@ -1,3 +1,10 @@
-// if not in session moved to /login if loggedin invoke next()
-const withAuth = (req, res, next) =>
-  !req.session.loggedIn ? res.redirect("/login") : next();
+const withAuth = (req, res, next) => {
+  // If the user is not logged in, redirect the request to the login route
+  if (!req.session.logged_in) {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+};
+
+module.exports = withAuth;
