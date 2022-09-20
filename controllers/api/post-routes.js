@@ -29,8 +29,12 @@ router.put("/:id", withAuth, async (req, res) => {
         id: req.params.id,
       },
     });
-    console.log("this is where it is", postData);
-    res.status(200);
+    console.log("POSTDATA=", postData);
+    if (postData > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
     res.status(500).json(err);
   }

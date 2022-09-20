@@ -13,7 +13,11 @@
 <ul class ="flex-row">
   <li class="li-inline nav-item"><a href="/">Home</a></li>
   <li class="li-inline nav-item"><a href="/dashboard">dashboard</a></li>
-  <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li> 
+{{#if logged_in}}
+  <li class="li-inline nav-item"><a href="/" id="logout-link">Logout</a></li> 
+  {{else}}
+ <li class="li-inline nav-item"><a href="/login" id="login-link">Login</a></li> 
+  {{/if}}
 </ul>
   </nav>
 <header class="hero">
@@ -33,5 +37,5 @@
 
 
 <script src="/js/logout.js"></script>
-
+<script src="/js/login.js"></script>
 </html>
