@@ -19,14 +19,17 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 //update new post
+
 router.put("/:id", withAuth, async (req, res) => {
   try {
     console.log("here is the req.body", req.body);
-    const postData = await Post.update(req.body, {
+
+    const [postData] = await Post.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
+    console.log("this is where it is", postData);
     res.status(200);
   } catch (err) {
     res.status(500).json(err);
