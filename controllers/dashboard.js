@@ -22,4 +22,11 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+// /new post needs to requested to be reponded on webpage.
+router.get("/new", withAuth, (req, res) => {
+  res.render("new-post", {
+    layout: "dashboard",
+  });
+});
+
 module.exports = router;

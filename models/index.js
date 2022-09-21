@@ -4,13 +4,13 @@ const User = require("./User");
 const Post = require("./Post");
 const Comment = require("./Comment");
 
-// User has many posts
+// User has many posts through user_id
 User.hasMany(Post, {
   foreignKey: "user_id",
   onDelete: "CASCADE",
 });
 
-// User has many comments
+// User has many comments through user_id
 User.hasMany(Comment, {
   foreignKey: "user_id",
   onDelete: "CASCADE",
@@ -21,7 +21,7 @@ Post.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-//Post has many comments
+//Post has many comments link post_id
 Post.hasMany(Comment, {
   foreignKey: "post_id",
   onDelete: "CASCADE",
