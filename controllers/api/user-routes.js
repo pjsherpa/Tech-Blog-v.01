@@ -43,8 +43,11 @@ router.post("/login", async (req, res) => {
       return;
     }
     req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.login = true;
 
+      console.log("user", userData);
       res.status(200).json({ user: userData, message: "You are logged in!" });
     });
   } catch (err) {

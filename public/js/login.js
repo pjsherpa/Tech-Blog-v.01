@@ -7,13 +7,14 @@ const loginFormHandler = async function (event) {
     const response = await fetch("/api/user/login", {
       method: "POST",
       body: JSON.stringify({
-        usernameEl,
-        passwordEl,
-        headers: { "Content-Type": "application/json" },
+        username: usernameEl.value,
+        password: passwordEl.value,
       }),
+      headers: { "Content-Type": "application/json" },
     });
     console.log("FIND THIS", usernameEl.value, passwordEl.value);
     if (response.ok) {
+      console.log("response", response);
       document.location.replace("/dashboard");
     } else {
       alert("Failed to login");
