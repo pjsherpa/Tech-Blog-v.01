@@ -7,8 +7,9 @@
   <label class="form-label" for="post-title">Title</label>
   <input type="text" name="post-title" value="{{post.title}}" class="form-input"/>
   <label class="form-label" for="post-body">Content</label>
-  <textarea name="post-body" class="form-input">{{post.body}}</textarea>
+  <input type="text" name="post-body" class="form-input" placeholder="{{post.body}}"/>
   <button type="submit" class="btn">Update</button>
+  
   <button type="button" id="delete-btn" class="btn">Delete</button>
 </form>
 </div>

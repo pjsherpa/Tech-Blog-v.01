@@ -1,11 +1,13 @@
-const newFormandler = async function (event) {
+const newFormhandler = async function (event) {
   event.preventDefault();
 
+  const title = document.querySelector('input[name="post-title"]').value;
   const body = document.querySelector('input[name="post-body"]').value;
-
+  console.log(body);
   await fetch("/api/post/:id", {
     method: "PUT",
     body: JSON.stringify({
+      title,
       body,
     }),
     headers: {
@@ -16,5 +18,5 @@ const newFormandler = async function (event) {
 };
 
 document
-  .querySelector("#new-post-form")
-  .addEventListener("submit", newFormandler);
+  .querySelector("#edit-post-form")
+  .addEventListener("submit", newFormhandler);
