@@ -31,10 +31,12 @@ User.init(
   {
     hooks: {
       async beforeCreate(newUserData) {
+        console.log("intercepted data:", newUserData);
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       async beforeUpdate(updatedUserData) {
+        console.log("intercepted data:", updatedUserData);
         updatedUserData.password = await bcrypt.hash(
           updatedUserData.password,
           10
