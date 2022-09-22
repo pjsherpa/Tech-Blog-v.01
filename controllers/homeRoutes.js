@@ -28,16 +28,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-//check which id the route will be located.
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: { id: req.params.id },
-      include: [Comment],
+      include: [User, { model: Comment }],
     });
     if (postData) {
       const post = postData.get({ plain: true });
-      console.log(post);
       res.render("single-post", { post, loggedIn: req.session.loggedIn });
     } else {
       res.status(404).end();
