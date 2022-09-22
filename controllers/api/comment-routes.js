@@ -18,8 +18,6 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.post("/", withAuth, async (req, res) => {
-  const body = req.body;
-
   try {
     const addComment = await Comment.create({
       comment_text: req.body.comment_text,
