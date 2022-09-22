@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Comment, User } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const commentData = await Comment.findAll({
       include: [User],
@@ -13,6 +13,7 @@ router.get("/", withAuth, async (req, res) => {
 
     res.render("single-post", { comments, loggedIn: req.session.loggedIn });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

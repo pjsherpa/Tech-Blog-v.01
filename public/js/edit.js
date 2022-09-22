@@ -18,6 +18,19 @@ const newFormhandler = async function (event) {
   document.location.replace("/dashboard");
 };
 
+const deleteClickHandler = async () => {
+  const post_id = document.querySelector('input[name="post-id"]').value;
+  await fetch(`/api/post/${post_id}`, {
+    method: "DELETE",
+  });
+
+  document.location.replace("/dashboard");
+};
+
 document
   .querySelector("#edit-post-form")
   .addEventListener("submit", newFormhandler);
+
+document
+  .querySelector("#delete-btn")
+  .addEventListener("click", deleteClickHandler);
