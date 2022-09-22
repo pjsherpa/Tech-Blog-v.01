@@ -22,9 +22,9 @@ Step 3: We will need to signup[img3](#img3) and then only can we log in[img2](#i
 
 step 4: Once logged in the logout navbar item appears[img5](#img5).
 
-Step 5: Once logged in on the homepage, click on the post then we can view the comments left and add new comments[img6](#img6).
+Step 5: Once logged in on the homepage, click on the post title then we can view the comments left and add new comments[img6](#img6).
 
-step 6: Once logged in on the dashboard, click on the post then we have an option to delete or update a post[img4](#img4).
+step 6: Once logged in on the dashboard,a new post button is present bottom of the page. If we click on it we can add a new post. If we click on the post title that has already been created then we have an option to delete or update a post[img4](#img4).
 
 step 7: Once logged out we will be redirected back to the homepage and the option to login nabar item appears[img1](#img1).
 
