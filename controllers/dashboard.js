@@ -15,7 +15,7 @@ router.get("/", withAuth, async (req, res) => {
     res.render("all-posts-administration", {
       posts,
       layout: "dashboard",
-      loggedIn: true,
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
