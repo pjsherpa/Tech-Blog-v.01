@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 //import from models folder
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 
 //Import cutom middleware
 const withAuth = require("../utils/auth");
@@ -32,17 +32,17 @@ router.get("/", async (req, res) => {
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [User],
       model: Comment,
     });
 
-    const posts = postData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     res.render("single-post", {
-      ...posts,
+      post,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
