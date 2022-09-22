@@ -19,7 +19,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-//update new post
+//update  post
 
 router.put("/:id", withAuth, async (req, res) => {
   try {
