@@ -4,7 +4,7 @@ const newFormhandler = async function (event) {
   const title = document.querySelector('input[name="post-title"]').value;
   const body = document.querySelector('input[name="post-body"]').value;
   console.log(body);
-  await fetch("/api/post/:id", {
+  await fetch("/dashboard/edit/:id", {
     method: "PUT",
     body: JSON.stringify({
       title,
