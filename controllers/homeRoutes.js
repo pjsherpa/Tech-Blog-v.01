@@ -31,24 +31,23 @@ router.get("/", async (req, res) => {
 //check which id the route will be located.
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id, {
-      model: Comment,
+    const postData = await Post.findOne({
+      where: { id: req.params.id },
+      include: [Comment],
     });
-
-    const post = postData.get({ plain: true });
-
-    res.render("single-post", {
-      post,
-      logged_in: req.session.logged_in,
-    });
+    if (postData) {
+      const post = postData.get({ plain: true });
+      console.log(post);
+      res.render("single-post", { post, loggedIn: req.session.loggedIn });
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
 router.get("/login", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect("/dashboard");
     return;
