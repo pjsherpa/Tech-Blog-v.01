@@ -21,6 +21,15 @@ const commentFormHandler = async function (event) {
   }
 };
 
+const deleteClickHandler = async () => {
+  const post_id = document.querySelector('input[name="post-id"]').value;
+  await fetch(`//api/comment`, {
+    method: "DELETE",
+  });
+
+  document.location.reload();
+};
+
 document
   .querySelector("#new-comment-form")
   .addEventListener("submit", commentFormHandler);
