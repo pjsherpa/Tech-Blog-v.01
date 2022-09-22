@@ -5,11 +5,7 @@ const withAuth = require("../../utils/auth");
 router.get("/", withAuth, async (req, res) => {
   try {
     const commentData = await Comment.findAll({
-      include: [
-        {
-          model: User,
-        },
-      ],
+      include: [User],
     });
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
